@@ -1,0 +1,40 @@
+
+! This Karel program tracks picks, logs defects, and stops the robot after 50 cycles.
+
+PROGRAM check_count
+%STACKSIZE = 4000
+VAR
+   pick_count: INTEGER
+   defect_count: INTEGER
+   log_file: FILE
+   sensor_state: BOOLEAN
+BEGIN
+   -- Initialize on first run (persisted via registers)
+   IF pick_count = 0 THEN
+      pick_count = GET_REG(1)  -- Read TP register R[1]
+      defect_count = GET_REG(2) -- Read TP register R[2]
+      OPEN_FILE(log_file, 'WIDGET_LOG.TXT', 'A')  -- Append mode
+   ENDIF
+
+   -- Increment pick counter
+   pick_count = pick_count + 1
+   SET_REG(1, pick_count)  -- Update TP register R[1]
+
+   -- Check defect sensor (DI[2]) and log
+   sensor_state = GET_INPUT(2)
+   IF sensor_state = TRUE THEN
+      defect_count = defect_count + 1
+      SET_REG(2, defect_count)
+      WRITE_FILE(log_file, 'Defect at pick #', pick_count, CR)
+   ENDIF
+
+   -- Stop after 50 picks
+   IF pick_count >= 50 THEN
+      SET_OUTPUT(3, TRUE)  -- Signal maintenance (DO[3])
+      WRITE_FILE(log_file, 'Maintenance required at ', pick_count, ' picks', CR)
+      CLOSE_FILE(log_file)
+      ABORT  -- Stop the TP program
+   ENDIF
+
+   CLOSE_FILE(log_file)
+END check_count

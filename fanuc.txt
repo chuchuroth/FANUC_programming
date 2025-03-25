@@ -1,4 +1,0 @@
-  1: L P[1] 100% FINE ;
-  2: WAIT 1000 ;  (Simulate pick-up, e.g., 1 second)
-  3: L P[2] 100% FINE ;
-  4: WAIT 1000 ;  (Simulate place, e.g., 1 second)

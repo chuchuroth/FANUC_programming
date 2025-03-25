@@ -1,0 +1,89 @@
+! For multiple conditions, TP’s label/jump system can get messy. Karel is better for such scenarios, offering WHILE loops and IF-THEN-ELSE, For basic tasks, TP suffices; for dynamic inputs, combine with Karel for clarity.
+
+
+
+PROGRAM pick_place_loop
+VAR
+    cycle_count: INTEGER = 0 ;
+    max_cycles: INTEGER = 10 ;
+BEGIN
+    WHILE cycle_count < max_cycles DO
+        IF GET_INPUT(1) = TRUE THEN  (Check DI[1])
+            CALL_PROG('pick_place') ;
+        ENDIF
+        cycle_count = cycle_count + 1 ;
+    ENDWHILE
+END pick_place_loop
+
+ROUTINE read_vision_data
+VAR
+    vision_ip: STRING = '192.168.0.100' ;
+    vision_port: INTEGER = 5000 ;
+    data: STRING ;
+BEGIN
+    OPEN_TCP(vision_ip, vision_port) ;
+    READ_LINE(data) ;
+    CLOSE_TCP() ;
+END read_vision_data
+
+
+
+! A robot picks parts and tracks cycles, stopping after 100 picks for maintenance—too complex for TP’s basic logic.
+
+  PROGRAM pick_counter
+  VAR
+     pick_count: INTEGER
+     pick_pos, place_pos: POSITION
+  BEGIN
+     pick_count = 0
+     WHILE pick_count < 100 DO
+        MOVE TO pick_pos
+        SET_OUTPUT(1, TRUE)  -- Gripper on
+        DELAY(500)
+        MOVE TO place_pos
+        SET_OUTPUT(1, FALSE) -- Gripper off
+        pick_count = pick_count + 1
+        WRITE('Picks: ', pick_count, CR)
+     ENDWHILE
+     WRITE('Maintenance required', CR)
+  END pick_counter
+
+
+
+
+
+! The robot adjusts dispensing speed based on a sensor reading (e.g., material thickness), requiring real-time computation.
+  PROGRAM dispense_control
+  VAR
+     speed: REAL
+     thickness: REAL
+  BEGIN
+     thickness = GET_ANALOG_INPUT(1)  -- Read sensor
+     speed = 100 + (thickness * 50)   -- Adjust speed
+     MOVE TO start_pos
+     SET_OUTPUT(2, TRUE)  -- Start dispensing
+     MOVE TO end_pos AT speed
+     SET_OUTPUT(2, FALSE)
+  END dispense_control
+
+
+
+
+
+! The robot inspects parts and logs defect data to a file for predictive maintenance—beyond TP’s capabilities.
+  PROGRAM defect_logger
+  VAR
+     defect_count: INTEGER
+     file_handle: FILE
+  BEGIN
+     defect_count = 0
+     OPEN_FILE(file_handle, 'DEFECTS.TXT', 'W')
+     FOR i = 1 TO 10 DO
+        MOVE TO inspect_pos[i]
+        IF GET_INPUT(2) = TRUE THEN
+           defect_count = defect_count + 1
+        ENDIF
+     ENDFOR
+     WRITE_FILE(file_handle, 'Defects: ', defect_count, CR)
+     CLOSE_FILE(file_handle)
+  END defect_logger
