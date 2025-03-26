@@ -2,10 +2,6 @@
 ! Selecting the position register (e.g., P[1]) via the pendant.
 ! Using jog controls (e.g., COORD mode for Cartesian movement) to position the robot.
 ! Pressing the “Record” button to save the position, ensuring no collisions or unreachable points.
-
-
-
-
 R[1]=0 ;  (Initialize cycle count in numeric register R[1])
 LBL[1] ;
 L P[1] 100% FINE ;
