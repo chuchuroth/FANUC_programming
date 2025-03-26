@@ -1,12 +1,4 @@
-
-
-
-
-
-
-
-! A FANUC robot picks parts from a conveyor and places them on a pallet, similar to a ROS node subscribing to a conveyor sensor topic and publishing to a gripper.
-
+! A FANUC robot picks parts from a conveyor and places them on a pallet, analogy: a ROS node subscribing to a conveyor sensor topic and publishing to a gripper.
 UFRAME[1] ; ! Set workspace frame
 UTOOL[1] ; ! Set gripper tool
 LBL[1] ; ! Start loop
