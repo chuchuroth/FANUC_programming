@@ -1,0 +1,4 @@
+
+! Karel can command robot motion using built-in routines
+  MOVE TO home_pos  -- Moves to a predefined position
+  SET_JOINT_POS(j1, j2, j3, j4, j5, j6)  -- Sets joint angles directly
