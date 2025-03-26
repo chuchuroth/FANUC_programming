@@ -1,18 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-! The robot inspects parts and logs defect data to a file for predictive maintenance—beyond TP’s capabilities.
+! The robot inspects parts and logs defect data to a file for predictive maintenance
   PROGRAM defect_logger
   VAR
      defect_count: INTEGER
