@@ -2,15 +2,16 @@
 
 ### **Introduction to FANUC Robot Programming**
 
-FANUC robots are a staple in industrial automation, commonly found in industries like automotive, electronics, and logistics. Unlike ROS, which is an open-source, modular framework with nodes and topics, FANUC uses proprietary programming languages: **TP language** for most tasks and **Karel** for advanced applications. These languages are designed to run on FANUC’s robot controllers and are typically programmed via a **teach pendant**, a handheld device used to control and program the robot.
+- FANUC robots are a staple in industrial automation, commonly found in industries like automotive, electronics, and logistics. 
+- FANUC uses proprietary programming languages: **TP language** for most tasks and **Karel** for advanced applications. These languages are designed to run on FANUC’s robot controllers and are typically programmed via a **teach pendant**, a handheld device used to control and program the robot.
 
 
 ---
 
 ### **Basic Concepts of FANUC TP Language**
 
-The TP language is the primary way to program FANUC robots. It’s a textual, structured language (similar to BASIC or Pascal) that you write and edit directly on the teach pendant
-Used for basic programming, it involves defining positions and simple motion commands, suitable for tasks like pick-and-place. It lacks advanced constructs like loops but supports labels and jumps for basic repetition.
+- The TP language is the primary way to program FANUC robots. It’s a textual, structured language (similar to BASIC or Pascal) that you write and edit directly on the teach pendant
+- Used for basic programming, it involves defining positions and simple motion commands, suitable for tasks like pick-and-place. It lacks advanced constructs like loops but supports labels and jumps for basic repetition.
 #### **Syntax and Structure**
 - Programs are written line-by-line, with each line typically holding one command.
 - Comments start with an exclamation mark: `! This is a comment`.
