@@ -14,10 +14,4 @@
 
 
 
-! karel Offers full programming constructs: IF-THEN-ELSE, FOR, WHILE, and CASE
-  IF counter < 10 THEN
-     MOVE TO pick_pos
-     counter = counter + 1
-  ELSE
-     MOVE TO home_pos
-  ENDIF
+
