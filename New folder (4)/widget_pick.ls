@@ -1,4 +1,3 @@
-
 ! This TP script moves the robot to pick and place parts, calling a Karel program to handle the counter and logging.
 
  1: UFRAME[1] ; ! Conveyor workspace frame
