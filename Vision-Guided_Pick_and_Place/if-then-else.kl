@@ -1,4 +1,8 @@
-! For multiple conditions, TP’s label/jump system can get messy. Karel is better for such scenarios, offering WHILE loops and IF-THEN-ELSE, For basic tasks, TP suffices; for dynamic inputs, combine with Karel for clarity.
+
+! karel Offers full programming constructs: IF-THEN-ELSE, FOR, WHILE, and CASE
+
+
+
 PROGRAM pick_place_loop
 VAR
     cycle_count: INTEGER = 0 ;
@@ -9,6 +13,14 @@ BEGIN
             CALL_PROG('pick_place') ;
         ENDIF
         cycle_count = cycle_count + 1 ;
+
+      IF counter < 10 THEN
+         MOVE TO pick_pos
+         counter = counter + 1
+      ELSE
+        MOVE TO home_pos
+      ENDIF
+
     ENDWHILE
 END pick_place_loop
 
