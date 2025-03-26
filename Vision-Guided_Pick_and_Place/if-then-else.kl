@@ -1,0 +1,24 @@
+! For multiple conditions, TP’s label/jump system can get messy. Karel is better for such scenarios, offering WHILE loops and IF-THEN-ELSE, For basic tasks, TP suffices; for dynamic inputs, combine with Karel for clarity.
+PROGRAM pick_place_loop
+VAR
+    cycle_count: INTEGER = 0 ;
+    max_cycles: INTEGER = 10 ;
+BEGIN
+    WHILE cycle_count < max_cycles DO
+        IF GET_INPUT(1) = TRUE THEN  (Check DI[1])
+            CALL_PROG('pick_place') ;
+        ENDIF
+        cycle_count = cycle_count + 1 ;
+    ENDWHILE
+END pick_place_loop
+
+ROUTINE read_vision_data
+VAR
+    vision_ip: STRING = '192.168.0.100' ;
+    vision_port: INTEGER = 5000 ;
+    data: STRING ;
+BEGIN
+    OPEN_TCP(vision_ip, vision_port) ;
+    READ_LINE(data) ;
+    CLOSE_TCP() ;
+END read_vision_data
