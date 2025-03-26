@@ -1,4 +1,3 @@
-
 ! This Karel program tracks picks, logs defects, and stops the robot after 50 cycles.
 
 PROGRAM check_count
