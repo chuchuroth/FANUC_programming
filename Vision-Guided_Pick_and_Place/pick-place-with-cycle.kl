@@ -1,0 +1,19 @@
+! A robot picks parts and tracks cycles, stopping after 100 picks for maintenance
+
+  PROGRAM pick_counter
+  VAR
+     pick_count: INTEGER
+     pick_pos, place_pos: POSITION
+  BEGIN
+     pick_count = 0
+     WHILE pick_count < 100 DO
+        MOVE TO pick_pos
+        SET_OUTPUT(1, TRUE)  -- Gripper on
+        DELAY(500)
+        MOVE TO place_pos
+        SET_OUTPUT(1, FALSE) -- Gripper off
+        pick_count = pick_count + 1
+        WRITE('Picks: ', pick_count, CR)
+     ENDWHILE
+     WRITE('Maintenance required', CR)
+  END pick_counter
