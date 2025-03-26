@@ -7,19 +7,6 @@
 
 
 
-! The robot adjusts dispensing speed based on a sensor reading (e.g., material thickness), requiring real-time computation.
-  PROGRAM dispense_control
-  VAR
-     speed: REAL
-     thickness: REAL
-  BEGIN
-     thickness = GET_ANALOG_INPUT(1)  -- Read sensor
-     speed = 100 + (thickness * 50)   -- Adjust speed
-     MOVE TO start_pos
-     SET_OUTPUT(2, TRUE)  -- Start dispensing
-     MOVE TO end_pos AT speed
-     SET_OUTPUT(2, FALSE)
-  END dispense_control
 
 
 
