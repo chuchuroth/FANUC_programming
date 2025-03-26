@@ -1,6 +1,5 @@
-! Karel: A higher-level language, similar to Pascal, enabling complex logic, loops, conditionals, and integration with external systems. It’s ideal for tasks requiring dynamic decision-making or extensive data handling.
-! Karel programs have a defined structure: a header, variable declarations, and a main body.
 
+! Karel programs have a defined structure: a header, variable declarations, and a main body.
   PROGRAM pick_place
   %STACKSIZE = 4000  -- Memory allocation
   VAR
@@ -13,14 +12,12 @@
 
 
 ! Karel can command robot motion using built-in routines, offering more control than TP’s simple J/L commands.
-
   MOVE TO home_pos  -- Moves to a predefined position
   SET_JOINT_POS(j1, j2, j3, j4, j5, j6)  -- Sets joint angles directly
 
 
 
-! Offers full programming constructs: IF-THEN-ELSE, FOR, WHILE, and CASE.
-
+! karel Offers full programming constructs: IF-THEN-ELSE, FOR, WHILE, and CASE
   IF counter < 10 THEN
      MOVE TO pick_pos
      counter = counter + 1
