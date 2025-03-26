@@ -1,0 +1,10 @@
+PROGRAM read_plc_data
+VAR
+    plc_ip: STRING = '192.168.0.1' ;
+    data: INTEGER ;
+BEGIN
+    OPEN_TCP(plc_ip, 502) ;  (Modbus TCP port)
+    READ_DATA(data) ;
+    IF data > 0 THEN CALL_PROG('pick_place') ;
+    CLOSE_TCP() ;
+END read_plc_data
